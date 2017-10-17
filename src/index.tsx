@@ -1,0 +1,20 @@
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import reducer from './reducers';
+import Counter1 from './containers/Counter1';
+import Counter2 from './containers/Counter2';
+import { Provider } from 'react-redux';
+import './index.css';
+
+const store = createStore(reducer);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <div>
+      <Counter1 />
+      <Counter2 />
+    </div>
+  </Provider>,
+  document.getElementById('root') as HTMLElement
+);
