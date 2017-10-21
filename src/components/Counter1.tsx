@@ -6,20 +6,25 @@ export interface Props {
   onDecrement?: () => void;
 }
 
-function Counter1({ count = 0, onIncrement, onDecrement }: Props) {
-  if (count < 0) {
-    throw new Error('Counter must not be less than 0');
-  }
+class Counter1 extends React.Component<Props, Object> {
+
+  render() {
+    const { count = 0, onIncrement, onDecrement } = this.props;
+
+    if (count < 0) {
+      throw new Error('Counter must not be less than 0');
+    }
   
-  return (
-    <div className="counter1">
-      Counter1 = <span className="count">{count}</span>
-      <div>
-        <button onClick={onDecrement} className="decrementButton">-</button>
-        <button onClick={onIncrement} className="incrementButton">+</button>
+    return (
+      <div className="counter1">
+        Counter1 = <span className="count">{count}</span>
+        <div>
+          <button onClick={onDecrement} className="decrementButton">-</button>
+          <button onClick={onIncrement} className="incrementButton">+</button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Counter1;
